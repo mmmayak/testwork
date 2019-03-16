@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
+import { withRouter } from 'react-router';
 import './Header.scss';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <nav className='navbar navbar-expand-lg navbar-dark header py-3'>
-      <div className='navbar-brand header__logo'>
+      <div className='navbar-brand header__logo' onClick={() => props.history.push('/')}>
         <img src={ logo } alt="logo" className='mr-3'/>
         <p>Sailor</p>
       </div>
@@ -22,9 +23,9 @@ const Header = () => {
               Sign in
             </NavLink>
             <NavLink 
-              className='header__navLink' 
+              className='header__navLink ml-3' 
               to='/sign-up'>
-              Sign in
+              Sign up
             </NavLink>
         </div>
       </div>
@@ -32,4 +33,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default withRouter(Header);

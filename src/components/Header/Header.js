@@ -17,7 +17,7 @@ const Header = () => {
         <div className='navbar-nav'>
             <NavLink 
               className='header__navLink' 
-              to='/asdasd'>
+              to='/logout'>
               Logout
             </NavLink>
         </div>

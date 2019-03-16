@@ -22,7 +22,7 @@ import SignIn from '../components/SignIn/SignIn';
           <Switch>
             <Route path='/sign-up' exact component={SignUp} />
             <Route path='/sign-in' exact component={SignIn} />
-            <Route path='/:id' exact component={ProductContainer}/>
+            <Route path='/:id' exact render={() => <ProductContainer products={this.props.products} />}/>
             <Route path='/' exact component={HomeContainer}/>
           </Switch>
       </React.Fragment>
@@ -30,10 +30,17 @@ import SignIn from '../components/SignIn/SignIn';
    }
 }
 
+const mapStateToProps = state => {
+  return {
+    products: state.products
+  }
+}
+
+
 const mapDispatchToProps = dispatch => {
   return {
     onGetProducts: () => dispatch(getProducts())
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Routes));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes));

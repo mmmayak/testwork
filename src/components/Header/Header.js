@@ -17,8 +17,14 @@ const Header = () => {
         <div className='navbar-nav'>
             <NavLink 
               className='header__navLink' 
-              to='/asdasd'>
-              Logout
+              activeClassName='active'
+              to='/sign-in'>
+              Sign in
+            </NavLink>
+            <NavLink 
+              className='header__navLink' 
+              to='/sign-up'>
+              Sign in
             </NavLink>
         </div>
       </div>

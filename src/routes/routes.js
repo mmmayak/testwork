@@ -22,7 +22,7 @@ import SignIn from '../components/SignIn/SignIn';
           <Switch>
             <Route path='/sign-up' exact component={SignUp} />
             <Route path='/sign-in' exact component={SignIn} />
-            <Route path='/:id' exact render={() => <ProductContainer products={this.props.products} />}/>
+            <Route path='/product/:id' exact component={ProductContainer}/>
             <Route path='/' exact component={HomeContainer}/>
           </Switch>
       </React.Fragment>

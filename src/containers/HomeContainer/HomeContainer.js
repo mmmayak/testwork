@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 class HomeContainer extends Component {
 
   navigateToProduct = (id) => {
-    this.props.history.push(`/${id}`)
+    this.props.history.push(`/product/${id}`)
   }
 
   render() {

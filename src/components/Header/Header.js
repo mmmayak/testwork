@@ -6,7 +6,7 @@ import './Header.scss';
 
 const Header = (props) => {
   return (
-    <nav className='navbar navbar-expand-lg navbar-dark header py-3'>
+    <nav className='navbar navbar-expand-lg navbar-dark header py-2'>
       <div className='navbar-brand header__logo' onClick={() => props.history.push('/')}>
         <img src={ logo } alt="logo" className='mr-3'/>
         <p>Sailor</p>
@@ -16,17 +16,26 @@ const Header = (props) => {
       </button>
       <div className='collapse navbar-collapse justify-content-end' id='navbarNav'>
         <div className='navbar-nav'>
-            <NavLink 
-              className='header__navLink' 
-              activeClassName='active'
-              to='/sign-in'>
-              Sign in
-            </NavLink>
-            <NavLink 
-              className='header__navLink ml-3' 
-              to='/sign-up'>
-              Sign up
-            </NavLink>
+          {props.isAuth ?
+            <p 
+              className='header__logout'
+              onClick={() => props.logout()}>Logout</p>  
+            :
+            <React.Fragment>
+              <NavLink 
+                className='header__navLink' 
+                activeClassName='active'
+                to='/sign-in'>
+                Sign in
+              </NavLink>
+              <NavLink 
+                className='header__navLink ml-3' 
+                to='/sign-up'>
+                Sign up
+              </NavLink>
+            </React.Fragment>
+          }
+            
         </div>
       </div>
     </nav>

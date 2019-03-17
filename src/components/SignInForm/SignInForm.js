@@ -1,6 +1,5 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
-import './SignUpForm.scss';
 
 const renderField = (field) => {
   return (
@@ -9,14 +8,13 @@ const renderField = (field) => {
       <input name={field.name} type={field.type} {...field.input} className='form-control'/>
      
         {field.meta.touched ? 
-          <div className='error'>{field.meta.error}</div> : ''}
+          <div className='error mt-2'>{field.meta.error}</div> : ''}
     </div>
   )
 }
 
- const SignUpForm = (props) => {
+ const SignInForm = (props) => {
    const { handleSubmit } = props;
-
   return (
     <form 
       onSubmit={handleSubmit}
@@ -31,7 +29,11 @@ const renderField = (field) => {
         type='password'
         component={renderField}
         label='Password'/>
-        <button type="submit" className="btn btn-success">Sign up</button>
+        {props.signInError ?
+          <div className='error mb-2'>
+            {props.signInError}
+          </div> : null}
+        <button type="submit" className="btn btn-danger">Sign in</button>
     </form>
   )
 }
@@ -49,6 +51,6 @@ const validate = (values) => {
 }
 
 export default reduxForm({
-  form: 'signup-form',
+  form: 'signin-form',
   validate
-})(SignUpForm);
+})(SignInForm);

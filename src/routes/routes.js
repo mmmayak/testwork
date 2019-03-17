@@ -7,20 +7,30 @@ import { connect } from 'react-redux';
 import ProductContainer from '../components/ProductContainer/ProductContainer';
 import { withRouter } from 'react-router';
 import SignUpContainer from '../containers/SignUpContainer/SignUpContainer';
+import SignInContainer from '../containers/SignInContainer/SignInContainer';
+import { logout, authCheckState } from '../actions/signin/signin';
 
  class Routes extends Component {
 
   componentDidMount(){
+    this.props.onTryAutoLogin();
     this.props.onGetProducts();
+  }
+
+  logoutHandler = () => {
+    this.props.onLogoutUser();
+    this.props.history.push('/sign-in')
   }
 
    render(){
     return (
       <React.Fragment>
-        <Header />
+        <Header 
+          logout={this.logoutHandler}
+          isAuth={this.props.isAuth}/>
           <Switch>
             <Route path='/sign-up' exact component={SignUpContainer} />
-            <Route path='/sign-in' exact component={SignUpContainer} />
+            <Route path='/sign-in' exact component={SignInContainer} />
             <Route path='/product/:id' exact component={ProductContainer}/>
             <Route path='/' exact component={HomeContainer}/>
           </Switch>
@@ -31,14 +41,17 @@ import SignUpContainer from '../containers/SignUpContainer/SignUpContainer';
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.products,
+    isAuth: state.signin.isAuth
   }
 }
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetProducts: () => dispatch(getProducts())
+    onGetProducts: () => dispatch(getProducts()),
+    onLogoutUser: () => dispatch(logout()),
+    onTryAutoLogin: () => dispatch(authCheckState())
   }
 }
 

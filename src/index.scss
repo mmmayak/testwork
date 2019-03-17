@@ -47,4 +47,14 @@ table {
 	outline: none;
 }
 
+.error {
+	color: red;
+}
 
+.btn {
+	background: #d80000;
+	border: none;
+	&:hover {
+		background: #ef0000;
+	}
+}

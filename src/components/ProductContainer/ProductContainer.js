@@ -4,11 +4,22 @@ import { withRouter } from 'react-router';
 import config from '../../helpers/config';
 import { getComments } from '../../actions/comments/comments';
 import Comment from '../Comment/Comment';
+import CommentForm from '../CommentForm/CommentForm';
 
  class ProductContainer extends Component {
 
+  state = {
+    chosenRate: null
+  }
+
   componentDidMount(){
     this.props.onGetComments(this.props.match.params.id);
+  }
+
+  chooseRateHandler = (value) => {
+    this.setState({
+      chosenRate: value
+    })
   }
 
   filterProduct = () => {
@@ -34,7 +45,11 @@ import Comment from '../Comment/Comment';
       <div className='container py-5'>
         <div className='row align-items-center flex-column'>
           {this.filterProduct()}
-          comment form
+          <div className='col-md-6 my-3'>
+          <CommentForm 
+            chooseRate={this.chooseRateHandler}/>
+          </div>
+          
           {this.props.comments.comments ?
           this.props.comments.comments.map(comment => (
             <div 

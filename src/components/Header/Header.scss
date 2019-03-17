@@ -19,4 +19,11 @@
   &__navLink.active{
     color: red;
   }
+  &__logout {
+    color: gray;
+    cursor: pointer;
+    &:hover{
+      color: red;
+    }
+  }
 }

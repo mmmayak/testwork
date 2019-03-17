@@ -16,22 +16,14 @@ import Comment from '../Comment/Comment';
       let filteredProduct = this.props.products.products.find(el => el.id === Number(this.props.match.params.id));
       return (
         <div className='col-md-6 d-flex align-items-center flex-column'>
-          <div 
-        style={{
-          width: '300px',
-          height: '300px'
-        }}>
-        <img src={`${config.url}static/${filteredProduct.img}`} 
-          alt="product"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover'
-          }}/>
+          <div className='card' style={{width: '100%'}}>
+            <img src={`${config.url}static/${filteredProduct.img}`} className='card-img-top' alt='...' />
+            <div className='card-body'>
+              <h5 className='card-title'>{filteredProduct.title}</h5>
+              <p className='card-text'>{filteredProduct.text}</p>
+            </div>
+          </div>
       </div>
-          <h3>{filteredProduct.title}</h3>
-          <p>{filteredProduct.text}</p>
-        </div>
       )
     }
   }
@@ -43,9 +35,18 @@ import Comment from '../Comment/Comment';
         <div className='row align-items-center flex-column'>
           {this.filterProduct()}
           comment form
-
-          <Comment
-            comments={this.props.comments}/>
+          {this.props.comments.comments ?
+          this.props.comments.comments.map(comment => (
+            <div 
+              className='col-md-6 mb-2'
+              key={comment.id}>
+              <Comment
+                comment={comment}/>
+            </div>
+            
+          ))
+          :null
+          }
         </div>
       </div>
     )
@@ -54,7 +55,6 @@ import Comment from '../Comment/Comment';
 
 
 const mapStateToProps = state => {
-  console.log(state.comments)
   return {
     products: state.products,
     comments: state.comments

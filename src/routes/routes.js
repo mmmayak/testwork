@@ -6,8 +6,7 @@ import { getProducts } from '../actions/products/products';
 import { connect } from 'react-redux';
 import ProductContainer from '../components/ProductContainer/ProductContainer';
 import { withRouter } from 'react-router';
-import SignUp from '../components/SignUp/SignUp';
-import SignIn from '../components/SignIn/SignIn';
+import SignUpContainer from '../containers/SignUpContainer/SignUpContainer';
 
  class Routes extends Component {
 
@@ -20,8 +19,8 @@ import SignIn from '../components/SignIn/SignIn';
       <React.Fragment>
         <Header />
           <Switch>
-            <Route path='/sign-up' exact component={SignUp} />
-            <Route path='/sign-in' exact component={SignIn} />
+            <Route path='/sign-up' exact component={SignUpContainer} />
+            <Route path='/sign-in' exact component={SignUpContainer} />
             <Route path='/product/:id' exact component={ProductContainer}/>
             <Route path='/' exact component={HomeContainer}/>
           </Switch>

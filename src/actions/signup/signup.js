@@ -7,7 +7,7 @@ import { signIn } from '../signin/signin';
 export const signUp = (values, history) => {
   return dispatch => {
     dispatch(signUpStart());
-    axios.post(`${config.url}/api/register/`, values)
+    axios.post(`${config.url}api/register/`, values)
     .then(response => {
       if(response.data.success){
         dispatch(signUpSuccess(response.data));

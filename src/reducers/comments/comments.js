@@ -22,6 +22,15 @@ const comments = ( state = initialState, action ) => {
         error: false,
         comments: action.payload
       }
+    case actionTypes.ADD_COMMENT_START:
+      return {
+        ...state
+      }
+    case actionTypes.ADD_COMMENT_SUCCESS: 
+      return {
+        ...state,
+        comments: [...state.comments, action.payload]
+      }
     default:
       return state
   }

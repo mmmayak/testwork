@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import config from '../../helpers/config';
-import { getComments } from '../../actions/comments/comments';
+import { getComments, addComment } from '../../actions/comments/comments';
 import Comment from '../Comment/Comment';
 import CommentForm from '../CommentForm/CommentForm';
 
@@ -38,6 +38,15 @@ import CommentForm from '../CommentForm/CommentForm';
       )
     }
   }
+  
+  addReviewHandler = (values) => {
+    let valuesToAdd = {
+      rate: this.state.chosenRate,
+      text: values.text
+    }
+    
+    this.props.onAddComments(Number(this.props.match.params.id), valuesToAdd)
+  }
 
    render(){
     
@@ -46,19 +55,20 @@ import CommentForm from '../CommentForm/CommentForm';
         <div className='row align-items-center flex-column'>
           {this.filterProduct()}
           <div className='col-md-6 my-3'>
-          <CommentForm 
-            chooseRate={this.chooseRateHandler}/>
+            <div className='card p-2'>
+              <CommentForm 
+              chooseRate={this.chooseRateHandler}
+              onSubmit={this.addReviewHandler}/>
+            </div>
           </div>
-          
           {this.props.comments.comments ?
-          this.props.comments.comments.map(comment => (
+          this.props.comments.comments.map((comment, index) => (
             <div 
               className='col-md-6 mb-2'
-              key={comment.id}>
+              key={index}>
               <Comment
                 comment={comment}/>
             </div>
-            
           ))
           :null
           }
@@ -79,7 +89,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetComments: (id) => dispatch(getComments(id))
+    onGetComments: (id) => dispatch(getComments(id)),
+    onAddComments: (id, values) => dispatch(addComment(id, values))
   }
 }
 

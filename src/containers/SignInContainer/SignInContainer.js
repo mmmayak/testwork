@@ -41,7 +41,6 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 }
 
 const mapStateToProps = state => {
-  console.log(state.signin.loading)
   return {
     signin: state.signin
   }

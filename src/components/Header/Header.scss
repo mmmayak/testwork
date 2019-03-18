@@ -15,15 +15,19 @@
   }
   &__navLink {
     color: gray;
+    text-decoration: none !important;
+    &:hover {
+      color: #d80000;
+    }
   }
   &__navLink.active{
-    color: red;
+    color: #d80000;
   }
   &__logout {
     color: gray;
     cursor: pointer;
     &:hover{
-      color: red;
+      color: #d80000;
     }
   }
 }

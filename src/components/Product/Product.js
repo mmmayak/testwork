@@ -20,7 +20,7 @@ import config from '../../helpers/config';
       <div className="card-body">
         <h5 className="card-title">{props.product.title}</h5>
         <p className="card-text mb-3">{props.product.text}</p>
-        <button onClick={() => props.navigateToProduct(props.product.id)} className="btn btn-primary">To Product</button>
+        <button onClick={() => props.navigateToProduct(props.product.id)} className="btn btn-danger">To Product</button>
       </div>
     </div>
   )

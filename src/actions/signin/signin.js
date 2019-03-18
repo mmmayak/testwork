@@ -6,9 +6,11 @@ import setAuthToken from '../../helpers/setAuthToken';
 export const signIn = (values, history) => {
   return dispatch => {
     dispatch(signInStart());
-    axios.post(`${config.url}/api/login/`, values)
+    axios.post(`${config.url}api/login/`, values)
     .then(response => {
       if(response.data.success){
+        localStorage.setItem('token', response.data.token);
+        setAuthToken(response.data.token);
         dispatch(signInSuccess(response.data));
         history.push('/');
       }else {
@@ -28,8 +30,6 @@ export const signInStart = () => {
 }
 
 export const signInSuccess = (data) => {
-  localStorage.setItem('token', data.token);
-  setAuthToken(data.token);
   return {
     type: actionTypes.SIGNIN_SUCCESS,
     payload: data
@@ -60,7 +60,8 @@ export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem('token');
     if(token) {
-      dispatch(signInSuccess(token))
+      dispatch(signInSuccess(token));
+      setAuthToken(token);
     }
   }
 }

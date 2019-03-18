@@ -23,13 +23,13 @@ const Header = (props) => {
             :
             <React.Fragment>
               <NavLink 
-                className='header__navLink' 
+                className='header__navLink mr-3' 
                 activeClassName='active'
                 to='/sign-in'>
                 Sign in
               </NavLink>
               <NavLink 
-                className='header__navLink ml-3' 
+                className='header__navLink' 
                 to='/sign-up'>
                 Sign up
               </NavLink>

@@ -5,7 +5,7 @@ import config from '../../helpers/config';
 export const getProducts = () => {
   return dispatch => {
     dispatch(getProductsStart());
-    axios.get(`${config.url}/api/products/`)
+    axios.get(`${config.url}api/products/`)
     .then(response => {
       dispatch(getProductsSuccess(response.data))
     })

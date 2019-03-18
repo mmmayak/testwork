@@ -17,7 +17,7 @@ class HomeContainer extends Component {
           {this.props.products && this.props.products.products?
             this.props.products.products.map(product => (
               <div 
-                className='col-md-4'
+                className='col-md-4 mb-3'
                 key={product.id}>
                 <Product
                   navigateToProduct={this.navigateToProduct}

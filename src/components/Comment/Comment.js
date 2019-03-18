@@ -13,7 +13,6 @@ import Rating from 'react-rating';
       />
       </div>
       <div className='card-body'>
-        <h5 className='card-title'>@{props.comment.created_by.username}</h5>
         <p className='card-text'>{props.comment.text}</p>
       </div>
     </div>

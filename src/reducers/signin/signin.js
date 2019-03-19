@@ -6,7 +6,7 @@ const initialState = {
   isAuth: false
 }
 
-const signup = ( state = initialState, action ) => {
+const signin = ( state = initialState, action ) => {
   switch(action.type){
     case actionTypes.SIGNIN_START:
       return {
@@ -39,4 +39,4 @@ const signup = ( state = initialState, action ) => {
   }
 }
 
-export default signup;
+export default signin;

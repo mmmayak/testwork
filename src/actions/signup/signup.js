@@ -9,11 +9,12 @@ export const signUp = (values, history) => {
     dispatch(signUpStart());
     axios.post(`${config.url}api/register/`, values)
     .then(response => {
+      console.log(response.data)
       if(response.data.success){
         dispatch(signUpSuccess(response.data));
         history.push('/sign-in')
       }else {
-        dispatch(signUpFail(response.data.success));
+        dispatch(signUpFail(response.data.message));
       }
      
     })
@@ -35,8 +36,9 @@ export const signUpSuccess = (data) => {
   }
 }
 
-export const signUpFail = () => {
+export const signUpFail = (message) => {
   return {
-    type: actionTypes.SIGNUP_FAIL
+    type: actionTypes.SIGNUP_FAIL,
+    payload: message
   }
 }

@@ -2,7 +2,7 @@ import * as actionTypes from '../../actions/actionTypes/actionTypes';
 
 const initialState = {
   loading: false,
-  error: false,
+  error: null,
   signup: null
 }
 
@@ -12,15 +12,22 @@ const signup = ( state = initialState, action ) => {
       return {
         ...state,
         loading: true,
-        error: false,
+        error: null,
         signup: null
       }
     case actionTypes.SIGNUP_SUCCESS:
       return {
         ...state, 
         loading: false,
-        error: false,
+        error: null,
         signup: action.payload
+      }
+    case actionTypes.SIGNUP_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        signup: null
       }
     default:
       return state

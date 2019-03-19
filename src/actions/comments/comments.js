@@ -1,13 +1,14 @@
 import * as actionTypes from '../actionTypes/actionTypes';
 import axios from 'axios';
 import config from '../../helpers/config';
+import {reset} from 'redux-form';
 
 export const getComments = (id) => {
   return dispatch => {
     dispatch(getCommentsStart());
     axios.get(`${config.url}api/reviews/${id}`)
     .then(response => {
-      dispatch(getCommentsSuccess(response.data))
+      dispatch(getCommentsSuccess(response.data));
     })
     .catch(err => {
       console.log(err);

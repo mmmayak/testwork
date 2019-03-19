@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Product from '../../components/Product/Product';
 import { withRouter } from 'react-router';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class HomeContainer extends Component {
 
@@ -10,11 +11,12 @@ class HomeContainer extends Component {
   }
 
   render() {
-
     return (
       <div className='container py-5'>
         <div className='row'>
-          {this.props.products && this.props.products.products?
+          {this.props.products.loading ?
+          <Spinner />
+          : this.props.products.products?
             this.props.products.products.map(product => (
               <div 
                 className='col-md-4 mb-3'

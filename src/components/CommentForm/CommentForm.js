@@ -33,6 +33,9 @@ const renderTextAreaField = (field) => {
         emptySymbol={<i className="far fa-star"></i>}
         fullSymbol={<i className="fas fa-star"></i>}
         onChange={props.chooseRate}/>
+        {props.fillError ? 
+          <p className='error'>Please, fill all fields</p>
+        : null}
         <button className='btn btn-danger mt-3'>Add review</button>
     </form>
   )

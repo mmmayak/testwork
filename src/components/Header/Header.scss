@@ -1,0 +1,33 @@
+.header {
+    background: #141414;
+  &__logo {
+    cursor: pointer;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    p {
+      font-weight: 700;
+    }
+  }
+  &__navLink {
+    color: gray;
+    text-decoration: none !important;
+    &:hover {
+      color: #d80000;
+    }
+  }
+  &__navLink.active{
+    color: #d80000;
+  }
+  &__logout {
+    color: gray;
+    cursor: pointer;
+    &:hover{
+      color: #d80000;
+    }
+  }
+}
